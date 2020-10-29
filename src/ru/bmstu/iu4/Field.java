@@ -3,6 +3,10 @@ package ru.bmstu.iu4;
 public class Field {
     private int width;
     private int height;
+    char horizontalSide = '.';
+    char vertivalSide = '.';
+    char fill = ' ';
+
     private char[][] field;
     Snake snake = new Snake();
 
@@ -23,18 +27,26 @@ public class Field {
     }
 
     public void initField() {
-        field = new char[height][width];
-        for (int i = 0; i < height; i++) {
-            for (int j = 0; j < width; j++) {
-                field[i][j] = ' ';
+        field = new char[height + 2][width + 2];
+        for (int i = 0; i < height + 2; i++) {
+            for (int j = 0; j < width + 2; j++) {
+                if (i == 0 || i == height + 2 - 1) {
+                    field[i][j] = horizontalSide;
+                } else {
+                    if (j == 0 || j == width + 2 - 1) {
+                        field[i][j] = vertivalSide;
+                    } else {
+                        field[i][j] = fill;
+                    }
+                }
             }
         }
-        field[snake.getY()][snake.getX()] = snake.getBody();///////////////////////////////Исправить нуль
+        field[snake.getY()][snake.getX()] = snake.getBody();
     }
 
     public void printField() {
-        for (int i = 0; i < height; i++) {
-            for (int j = 0; j < width; j++) {
+        for (int i = 0; i < height + 2; i++) {
+            for (int j = 0; j < width + 2; j++) {
                 System.out.print(field[i][j]);
             }
             System.out.println();
@@ -42,49 +54,53 @@ public class Field {
     }
 
     public void makeMoveRight() {
-        if (snake.getX() == width - 1) {
-            field[snake.getY()][snake.getX()] = ' ';
-            snake.setX(0);
+        if (snake.getX() == width) {
+            field[snake.getY()][snake.getX()] = fill;
+            snake.setX(1);
             field[snake.getY()][snake.getX()] = snake.getBody();
-        } else {
+        }
+        else {
+            field[snake.getY()][snake.getX()] = fill;
             snake.incrementX();
-            field[snake.getY()][snake.getX() - 1] = ' ';
             field[snake.getY()][snake.getX()] = snake.getBody();
         }
     }
 
     public void makeMoveLeft() {
-        if (snake.getX() == 0) {
-            field[snake.getY()][snake.getX()] = ' ';
-            snake.setX(width - 1);
+        if (snake.getX() == 1) {
+            field[snake.getY()][snake.getX()] = fill;
+            snake.setX(width);
             field[snake.getY()][snake.getX()] = snake.getBody();
-        } else {
+        }
+        else {
+            field[snake.getY()][snake.getX()] = fill;
             snake.decrementX();
-            field[snake.getY()][snake.getX() + 1] = ' ';
             field[snake.getY()][snake.getX()] = snake.getBody();
         }
     }
 
     public void makeMoveDown() {
-        if (snake.getY() == height - 1) {
-            field[snake.getY()][snake.getX()] = ' ';
-            snake.setY(0);
+        if (snake.getY() == height) {
+            field[snake.getY()][snake.getX()] = fill;
+            snake.setY(1);
             field[snake.getY()][snake.getX()] = snake.getBody();
-        } else {
+        }
+        else {
+            field[snake.getY()][snake.getX()] = fill;
             snake.incrementY();
-            field[snake.getY() - 1][snake.getX()] = ' ';
             field[snake.getY()][snake.getX()] = snake.getBody();
         }
     }
 
     public void makeMoveUp() {
-        if (snake.getY() == 0) {
-            field[snake.getY()][snake.getX()] = ' ';
-            snake.setY(height - 1);
+        if (snake.getY() == 1) {
+            field[snake.getY()][snake.getX()] = fill;
+            snake.setY(height);
             field[snake.getY()][snake.getX()] = snake.getBody();
-        } else {
+        }
+        else {
+            field[snake.getY()][snake.getX()] = fill;
             snake.decrementY();
-            field[snake.getY() + 1][snake.getX()] = ' ';
             field[snake.getY()][snake.getX()] = snake.getBody();
         }
     }
