@@ -11,31 +11,29 @@ public class Starter {
         field.snake.setX(1);
         field.snake.setY(1);
         field.initField();
-        //char c = (char) System.in.read();
-        //System.out.print("Ты ввел: " + c);
+        field.printField();
 
-
-
+        char tmp;
         while (true) {
-            field.printField();
-            switch (System.in.read()) {
-                case ('w') :
+            tmp = (char) System.in.read();
+            switch (tmp) {
+                case 'w' :
                     field.makeMoveUp();
-                case ('a') :
+                    break;
+                case 'a' :
                     field.makeMoveLeft();
-                case ('s') :
+                    break;
+                case 's' :
                     field.makeMoveDown();
-                case ('d') :
+                    break;
+                case 'd' :
                     field.makeMoveRight();
+                    break;
             }
-            //field.printField();
-            //field.makeMoveRight();
-            //field.makeMoveLeft();
-            //field.makeMoveUp();
-            //field.makeMoveDown();
-            for (int i = 0; i < 6; i++) {
-                System.out.println();
-            }
+            field.printField();
+            //for (int i = 0; i < 6; i++) {
+            //    System.out.println();
+            //}
             //try {
             //    Thread.sleep(1000);
             //} catch (InterruptedException ex) {
