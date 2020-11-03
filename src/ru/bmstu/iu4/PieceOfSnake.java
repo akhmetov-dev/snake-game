@@ -3,45 +3,55 @@ package ru.bmstu.iu4;
 public class PieceOfSnake {
     private int x;
     private int y;
+    private int turn;                       // Содержит идентификатор направления хода выбранного элемента (1 ячейки) змейки
+                                            // 0 - хода не было, 1 - влево, 2 - вверх, 3 - вправо, 4 - влево
     private char symbol  = '*';
 
-    public void setX(int valX) {
+    public void setX(int valX) {            // Сеттер координаты по Х текущего элемента (1 ячейки) змейки
         x = valX;
     }
 
-    public void incrementX() {
+    public void incrementX() {              // Инкремент (увеличение на 1) координаты по Х текущего элемента (1 ячейки) змейки
         x++;
     }
 
-    public void decrementX() {
+    public void decrementX() {              // Декремент (уменьшение на 1) координаты по Х текущего элемента (1 ячейки) змейки
         x--;
     }
 
-    public int getX() {
+    public int getX() {                     // Геттер координаты по Х текущего элемента (1 ячейки) змейки
         return x;
     }
 
-    public void setY(int valY) {
+    public void setY(int valY) {            // Сеттер координаты по У текущего элемента (1 ячейки) змейки
         y = valY;
     }
 
-    public void incrementY() {
+    public void incrementY() {              // Инкремент (увеличение на 1) координаты по У текущего элемента (1 ячейки) змейки
         y++;
     }
 
-    public void decrementY() {
+    public void decrementY() {              // Декремент (уменьшение на 1) координаты по У текущего элемента (1 ячейки) змейки
         y--;
     }
 
-    public int getY() {
+    public int getY() {                     // Геттер координаты по У текущего элемента (1 ячейки) змейки
         return y;
     }
 
-    public void setSymbol(char b) {
-        symbol = b;
+    public void setSymbol(char sym) {         // Сеттер переменной хранящей символ для отображения текущего элемента змейки
+        symbol = sym;
     }
 
-    public char getSymbol() {
+    public char getSymbol() {               // Геттер переменной хранящей символ для отображения текущего элемента змейки
         return symbol;
+    }
+
+    public void setTurn(int id) {           // Сеттер идентификатора направления хода выбранного элемента змейки
+        turn = id;
+    }
+
+    public int getTurn() {               // Геттер идентификатора направления хода выбранного элемента змейки
+        return turn;
     }
 }
