@@ -9,5 +9,6 @@ public class Starter {
         //tests.testMoveUp();
         //tests.testMoveRight();
         //tests.testMoveDown();
+        tests.testField();
     }
 }

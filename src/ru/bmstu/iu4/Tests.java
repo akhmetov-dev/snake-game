@@ -90,4 +90,13 @@ public class Tests {
         snake.moveDown();
         snake.printCoordinates();
     }
+
+    public void testField () {
+        int width = 10;
+        int height = 10;
+        Container container = new Container();
+        container.initContainer(width, height);
+        container.initField();
+        container.printField();
+    }
 }
