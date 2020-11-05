@@ -1,5 +1,6 @@
 package ru.bmstu.iu4;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -250,5 +251,9 @@ public class Snake {
 
     public int getSize() {
         return this.body.size();
+    }
+
+    public PieceOfSnake getPieceOfSnake(int index) {
+        return this.body.get(index);
     }
 }

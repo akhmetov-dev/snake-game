@@ -14,7 +14,7 @@ public class Container {
         this.setHeight(height);
         this.snake = new Snake();
         this.snake.initSnake();
-        this.snake.dbgAddPieceOfSnake((int)(width/2),(int)(height/2),0);
+        //this.snake.dbgAddPieceOfSnake((int)(width/2),(int)(height/2),0);
     }
 
     public void setWidth(int width) {
@@ -57,7 +57,7 @@ public class Container {
         return this.filler;
     }
 
-    public void initField() {
+    public void clearField() {
         this.field = new char[height][width];
 
         for (int i = 0; i < height; i++) {
@@ -67,12 +67,40 @@ public class Container {
         }
     }
 
-    public void printField () {
-        for (int i = 0; i < height; i++) {
-            for (int j = 0; j < width; j++) {
-                System.out.print(this.field[i][j]);
+    public void printField () {                                     // Печать поля
+        for (int i = height + 2 - 1; i >= 0; i--) {
+            for (int j = 0; j < width + 2; j++) {
+                if (i == 0 || i == height + 2 - 1) {                // Если это первая/последняя строка, то печатаем символ горизонтальной границы ('-')
+                    System.out.print(this.horizontalSide);
+                }
+                else {
+                    if (j == 0 || j == width + 2 - 1) {             // Иначе, если это первый/последний символ в строке, печатаем боковую символ вертикальной границы ('|')
+                        System.out.print(this.verticalSide);
+                    }
+                    else {
+                        System.out.print(this.field[i - 1][j - 1]); // Иначе печатаем содержимое поля
+                    }
+                }
             }
             System.out.println();
+        }
+    }
+
+    public void updateField () {
+        int x, y;
+        PieceOfSnake tmp = new PieceOfSnake();
+        for (int i = 0; i < this.snake.getSize(); i++) {
+            tmp = this.snake.getPieceOfSnake(i);
+            x = tmp.getX();
+            y = tmp.getY();
+
+            if (y >= height || y < 0 || x >= width || x < 0) {
+                System.out.println("You lose!");
+                System.exit(1);
+            }
+            else {
+                field[y][x] = tmp.getSymbol();
+            }
         }
     }
 }
