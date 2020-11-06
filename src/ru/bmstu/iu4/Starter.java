@@ -10,5 +10,6 @@ public class Starter {
         //tests.testMoveRight();
         //tests.testMoveDown();
         tests.testField();
+        //tests.testGenerateRandomNum ();
     }
 }

@@ -100,23 +100,22 @@ public class Tests {
         container.initContainer(width, height);
         container.clearField();
 
-        container.snake.dbgAddPieceOfSnake(2, 2, 0);
-        container.snake.dbgAddPieceOfSnake(2, 3, 0);
-        container.snake.dbgAddPieceOfSnake(3, 3, 0);
-        container.snake.dbgAddPieceOfSnake(3, 4, 0);
-        container.snake.dbgAddPieceOfSnake(4, 4, 0);
-        container.snake.dbgAddPieceOfSnake(5, 4, 0);
-        container.snake.dbgAddPieceOfSnake(6, 4, 0);
-        container.snake.dbgAddPieceOfSnake(6, 3, 0);
-        container.snake.dbgAddPieceOfSnake(6, 2, 0);
-        container.snake.dbgAddPieceOfSnake(5, 2, 0);
+        //container.snake.dbgAddPieceOfSnake(2, 2, 0);
+        //container.snake.dbgAddPieceOfSnake(2, 3, 0);
+        //container.snake.dbgAddPieceOfSnake(3, 3, 0);
+        //container.snake.dbgAddPieceOfSnake(3, 4, 0);
+        //container.snake.dbgAddPieceOfSnake(4, 4, 0);
+        //container.snake.dbgAddPieceOfSnake(5, 4, 0);
+        //container.snake.dbgAddPieceOfSnake(6, 4, 0);
+        //container.snake.dbgAddPieceOfSnake(6, 3, 0);
+        //container.snake.dbgAddPieceOfSnake(6, 2, 0);
+        //container.snake.dbgAddPieceOfSnake(5, 2, 0);
 
         container.updateField();
         container.printField();
         char c;
         while (true) {
             c = (char) System.in.read();
-            System.out.print(c);
             switch (c) {
                 case 'a':
                     container.snake.moveLeft();
@@ -134,6 +133,25 @@ public class Tests {
             container.clearField();
             container.updateField();
             container.printField();
+        }
+    }
+
+    public void testGenerateRandomNum () throws IOException {
+        int x = 10;
+        int y = 15;
+
+        int r1;
+        int r2;
+        char c;
+        while (true) {
+            r1 = (int) (Math.random() * x);
+            r2 = (int) (Math.random() * y);
+            c = (char) System.in.read();
+            switch (c) {
+                case 'a':
+                    System.out.println(r1 + ", " + r2);
+                    break;
+            }
         }
     }
 }

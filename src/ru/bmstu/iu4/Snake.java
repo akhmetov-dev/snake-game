@@ -256,4 +256,40 @@ public class Snake {
     public PieceOfSnake getPieceOfSnake(int index) {
         return this.body.get(index);
     }
+
+    public void growUp() {                                                      // Рост змейки (когда поглощает еду)
+        int size = this.body.size();
+
+        int lastX = this.body.get(size - 1).getX();
+        int lastY = this.body.get(size - 1).getY();
+
+        PieceOfSnake tmp = new PieceOfSnake();
+
+        int t = this.body.get(size - 1).getTurn();                             // Определяем направление движения последнего кусочка змейки
+
+        switch (t) {
+            case 1:                                                            // Обработка движения влево
+                tmp.setX(lastX + 1);
+                tmp.setY(lastY);
+                tmp.setTurn(0);
+                break;
+            case 2:                                                            // Обработка движения вверх
+                tmp.setX(lastX);
+                tmp.setY(lastY - 1);
+                tmp.setTurn(0);
+                break;
+            case 3:                                                            // Обработка движения вправо
+                tmp.setX(lastX - 1);
+                tmp.setY(lastY);
+                tmp.setTurn(0);
+                break;
+            case 4:                                                            // Обработка движения вниз
+                tmp.setX(lastX);
+                tmp.setY(lastY + 1);
+                tmp.setTurn(0);
+                break;
+        }
+        tmp.setSymbol('*');
+        this.body.add(tmp);
+    }
 }
