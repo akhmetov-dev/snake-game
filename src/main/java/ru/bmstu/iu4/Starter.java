@@ -7,26 +7,32 @@ public class Starter {
         int width = 10;
         int height = 10;
 
-        SnakeGame container = new SnakeGame();
+        Game container = new Game();
         container.initContainer(width, height);
         container.clearField();
         container.updateField();
         container.printField();
 
-        char c;
         while (true) {
-            c = (char) System.in.read();
-            switch (c) {
-                case 'a':
+            try
+            {
+                Thread.sleep(1000);
+            }
+            catch(InterruptedException ex)
+            {
+                Thread.currentThread().interrupt();
+            }
+            switch (container.listener.getMove()) {
+                case 1:
                     container.snake.moveLeft();
                     break;
-                case 'w':
+                case 2:
                     container.snake.moveUp();
                     break;
-                case 'd':
+                case 3:
                     container.snake.moveRight();
                     break;
-                case 's':
+                case 4:
                     container.snake.moveDown();
                     break;
             }

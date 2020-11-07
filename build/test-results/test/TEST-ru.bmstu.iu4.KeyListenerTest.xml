@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ru.bmstu.iu4.KeyListenerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-11-07T11:16:38" hostname="DESKTOP-HTHBLUQ" time="0.011">
+  <properties/>
+  <testcase name="testKeyListener" classname="ru.bmstu.iu4.KeyListenerTest" time="0.011"/>
+  <system-out><![CDATA[Hello world!
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -8,7 +8,7 @@ public class SnakeTest extends TestCase {
         int width = 10;
         int height = 10;
 
-        SnakeGame container = new SnakeGame();
+        Game container = new Game();
         container.initContainer(width, height);
 
         for (int i = 0; i < 3; i++) {
@@ -27,7 +27,7 @@ public class SnakeTest extends TestCase {
         int width = 10;
         int height = 10;
 
-        SnakeGame container = new SnakeGame();
+        Game container = new Game();
         container.initContainer(width, height);
 
         for (int i = 0; i < 3; i++) {
@@ -46,7 +46,7 @@ public class SnakeTest extends TestCase {
         int width = 10;
         int height = 10;
 
-        SnakeGame container = new SnakeGame();
+        Game container = new Game();
         container.initContainer(width, height);
 
         for (int i = 0; i < 3; i++) {
@@ -65,7 +65,7 @@ public class SnakeTest extends TestCase {
         int width = 10;
         int height = 10;
 
-        SnakeGame container = new SnakeGame();
+        Game container = new Game();
         container.initContainer(width, height);
 
         for (int i = 0; i < 3; i++) {

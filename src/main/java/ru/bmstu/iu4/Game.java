@@ -1,6 +1,8 @@
 package ru.bmstu.iu4;
 
-public class SnakeGame {
+import java.awt.event.KeyListener;
+
+public class Game {
     private int width;
     private int height;
     private char horizontalSide = '-';
@@ -10,6 +12,8 @@ public class SnakeGame {
     public Food food;
     public char[][] field;
     int score;
+
+    MoveListener listener;
 
     public void generateFood() {                                                                                        // Генератор координат еды
         int randX;
@@ -44,6 +48,7 @@ public class SnakeGame {
         this.generateFood();
         this.snake.addHead((int) (width / 2), (int) (height / 2), 0);
         this.score = 0;
+        listener = new MoveListener();
     }
 
     public void setWidth(int width) {                                                                                   // Сеттер ширины поля
