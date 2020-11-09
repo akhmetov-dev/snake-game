@@ -12,12 +12,12 @@ public class SnakeTest extends TestCase {
         container.initContainer(width, height);
 
         for (int i = 0; i < 3; i++) {
-            container.snake.growUp();
+            container.getSnake().growUp();
         }
         container.clearField();
         container.updateField();
         container.printField();
-        container.snake.moveLeft();
+        container.getSnake().moveLeft();
         container.clearField();
         container.updateField();
         container.printField();
@@ -31,12 +31,12 @@ public class SnakeTest extends TestCase {
         container.initContainer(width, height);
 
         for (int i = 0; i < 3; i++) {
-            container.snake.growUp();
+            container.getSnake().growUp();
         }
         container.clearField();
         container.updateField();
         container.printField();
-        container.snake.moveRight();
+        container.getSnake().moveRight();
         container.clearField();
         container.updateField();
         container.printField();
@@ -50,12 +50,12 @@ public class SnakeTest extends TestCase {
         container.initContainer(width, height);
 
         for (int i = 0; i < 3; i++) {
-            container.snake.growUp();
+            container.getSnake().growUp();
         }
         container.clearField();
         container.updateField();
         container.printField();
-        container.snake.moveUp();
+        container.getSnake().moveUp();
         container.clearField();
         container.updateField();
         container.printField();
@@ -69,12 +69,12 @@ public class SnakeTest extends TestCase {
         container.initContainer(width, height);
 
         for (int i = 0; i < 3; i++) {
-            container.snake.growUp();
+            container.getSnake().growUp();
         }
         container.clearField();
         container.updateField();
         container.printField();
-        container.snake.moveDown();
+        container.getSnake().moveDown();
         container.clearField();
         container.updateField();
         container.printField();

@@ -1,21 +1,20 @@
 package ru.bmstu.iu4;
 
-import java.awt.event.KeyListener;
-
 public class Game {
-    private int width;
-    private int height;
-    private char horizontalSide = '-';
-    private char verticalSide = '|';
-    private char filler = ' ';
-    public Snake snake;
-    public Food food;
-    public char[][] field;
-    int score;
+    private int width;                                                                                                  // width of field
+    private int height;                                                                                                 // height of field
+    private char horizontalSide = '-';                                                                                  // Symbol to show horizontal side of field
+    private char verticalSide = '|';                                                                                    // Symbol to show vertical side of field
+    private char filler = ' ';                                                                                          // Filler of content of field
+    private Snake snake;
+    private Food food;
+    private char[][] field;
+    private int score;
+    private int mode;
 
-    MoveListener listener;
+    public MoveListener listener;                                                                                       // Key listener for intercept of user press button
 
-    public void generateFood() {                                                                                        // Генератор координат еды
+    public void generateFood() {                                                                                        // food coordinates generator
         int randX;
         int randY;
         boolean flag;
@@ -39,7 +38,7 @@ public class Game {
         }
     }
 
-    public void initContainer(int width, int height) {                                                                  // Инициализация поля
+    public void initContainer(int width, int height) {                                                                  // Initialization of field
         this.setWidth(width);
         this.setHeight(height);
         this.snake = new Snake();
@@ -48,46 +47,50 @@ public class Game {
         this.generateFood();
         this.snake.addHead((int) (width / 2), (int) (height / 2), 0);
         this.score = 0;
-        listener = new MoveListener();
+        this.listener = new MoveListener();
     }
 
-    public void setWidth(int width) {                                                                                   // Сеттер ширины поля
+    public Snake getSnake () {                                                                                          // Getter snake
+        return this.snake;
+    }
+
+    public void setWidth(int width) {                                                                                   // Setter width of field
         this.width = width;
     }
 
-    public int getWidth() {                                                                                             // Геттер ширины поля
+    public int getWidth() {                                                                                             // Getter width of field
         return this.width;
     }
 
-    public void setHeight(int height) {                                                                                 // Сеттер высоты поля
+    public void setHeight(int height) {                                                                                 // Setter height of field
         this.height = height;
     }
 
-    public int getHeight() {                                                                                            // Геттер высоты поля
+    public int getHeight() {                                                                                            // Getter height of field
         return this.height;
     }
 
-    public void setVerticalSide(char verticalSide) {                                                                    // Сеттер символа левой/правой границы поля
+    public void setVerticalSide(char verticalSide) {                                                                    // Setter for symbol to show vertical side of field
         this.verticalSide = verticalSide;
     }
 
-    public char getVerticalSide() {                                                                                     // Геттер символа левой/правой границы поля
+    public char getVerticalSide() {                                                                                     // Getter for symbol to show vertical side of field
         return this.verticalSide;
     }
 
-    public void setHorizontalSide(char horizontalSide) {                                                                // Сеттер символа верхней/нижней границы поля
+    public void setHorizontalSide(char horizontalSide) {                                                                // Setter for symbol to show horizontal side of field
         this.horizontalSide = horizontalSide;
     }
 
-    public char getHorizontalSide() {                                                                                   // Геттер символа верхней/нижней границы поля
+    public char getHorizontalSide() {                                                                                   // Getter for symbol to show horizontal side of field
         return this.horizontalSide;
     }
 
-    public void setFiller(char filler) {                                                                                // Сеттер символа "пустой" ячейки поля
+    public void setFiller(char filler) {                                                                                // Setter Filler of content of field
         this.filler = filler;
     }
 
-    public char getFiller() {                                                                                           // Геттер символа "пустой" ячейки поля
+    public char getFiller() {                                                                                           // Setter Filler of content of field
         return this.filler;
     }
 
@@ -103,7 +106,7 @@ public class Game {
         this.score++;
     }
 
-    public void clearField() {                                                                                          // Очистка поля
+    public void clearField() {                                                                                          // Clear field
         this.field = new char[height][width];
 
         for (int i = 0; i < height; i++) {
@@ -113,16 +116,16 @@ public class Game {
         }
     }
 
-    public void printField() {                                                                                          // Печать поля
+    public void printField() {                                                                                          // PrintField
         for (int i = height + 2 - 1; i >= 0; i--) {
             for (int j = 0; j < width + 2; j++) {
-                if (i == 0 || i == height + 2 - 1) {                                                                    // Если это первая/последняя строка, то печатаем символ горизонтальной границы ('-')
+                if (i == 0 || i == height + 2 - 1) {                                                                    // If it's first or last line, print horizontal bounary ('-' by default)
                     System.out.print(this.horizontalSide);
                 } else {
-                    if (j == 0 || j == width + 2 - 1) {                                                                 // Иначе, если это первый/последний символ в строке, печатаем боковую символ вертикальной границы ('|')
+                    if (j == 0 || j == width + 2 - 1) {                                                                 // Else: if it's first\last symbol in line, print vertical bounary('|' by default)
                         System.out.print(this.verticalSide);
                     } else {
-                        System.out.print(this.field[i - 1][j - 1]);                                                     // Иначе печатаем содержимое поля
+                        System.out.print(this.field[i - 1][j - 1]);                                                     // Else print filler
                     }
                 }
             }
@@ -130,7 +133,7 @@ public class Game {
         }
     }
 
-    public void updateField() {                                                                                         // Перенос обновленных координат тела змейки и еды на поле
+    public void updateField() {                                                                                         // transfer of snake's coordinates
         int x, y;
         int foodX = food.getX();
         int foodY = food.getY();
@@ -139,7 +142,7 @@ public class Game {
         for (int i = 0; i < this.snake.getSize(); i++) {
             if (i == 0) {
                 if (this.snake.getSize() > 1) {
-                    for (int j = 1; j < this.snake.getSize(); j++) {                                                        // Проверка на самопересечение
+                    for (int j = 1; j < this.snake.getSize(); j++) {                                                        // intersect yourself check
                         if (this.snake.getPieceOfSnake(0).getX() == this.snake.getPieceOfSnake(j).getX() && this.snake.getPieceOfSnake(0).getY() == this.snake.getPieceOfSnake(j).getY()) {
                             System.out.println("You lose!");
                             System.out.println("Your score: " + this.score);
@@ -167,5 +170,13 @@ public class Game {
                 field[y][x] = tmp.getSymbol();
             }
         }
+    }
+
+    public void setMode(int mode) {
+        this.mode = mode;
+    }
+
+    public int getMode() {
+        return this.mode;
     }
 }
