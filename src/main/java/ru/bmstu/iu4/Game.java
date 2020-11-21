@@ -1,18 +1,15 @@
 package ru.bmstu.iu4;
 
+import java.awt.*;
+
 public class Game {
-    private int width;                                                                                                  // width of field
-    private int height;                                                                                                 // height of field
-    private char horizontalSide = '-';                                                                                  // Symbol to show horizontal side of field
-    private char verticalSide = '|';                                                                                    // Symbol to show vertical side of field
-    private char filler = ' ';                                                                                          // Filler of content of field
+    private int width = 10;                                                                                                  // width of field
+    private int height = 10;                                                                                                 // height of field
     private Snake snake;
     private Food food;
-    private char[][] field;
     private int score;
-    private int mode;
-
-    public MoveListener listener;                                                                                       // Key listener for intercept of user press button
+    public MoveListener listener = new MoveListener(width, height);                                                                         // Key listener for intercept of user press button
+    public boolean gameOn;
 
     public void generateFood() {                                                                                        // food coordinates generator
         int randX;
@@ -38,19 +35,19 @@ public class Game {
         }
     }
 
-    public void initContainer(int width, int height) {                                                                  // Initialization of field
-        this.setWidth(width);
-        this.setHeight(height);
+    public void initContainer() {                                                                  // Initialization of field
         this.snake = new Snake();
         this.snake.initSnake();
+        this.snake.addHead((int) (width / 2), (int) (height / 2), 0);
         this.food = new Food();
         this.generateFood();
-        this.snake.addHead((int) (width / 2), (int) (height / 2), 0);
         this.score = 0;
-        this.listener = new MoveListener();
+        //listener = new MoveListener(width, height);
+        gameOn = true;
+
     }
 
-    public Snake getSnake () {                                                                                          // Getter snake
+    public Snake getSnake() {                                                                                          // Getter snake
         return this.snake;
     }
 
@@ -70,30 +67,6 @@ public class Game {
         return this.height;
     }
 
-    public void setVerticalSide(char verticalSide) {                                                                    // Setter for symbol to show vertical side of field
-        this.verticalSide = verticalSide;
-    }
-
-    public char getVerticalSide() {                                                                                     // Getter for symbol to show vertical side of field
-        return this.verticalSide;
-    }
-
-    public void setHorizontalSide(char horizontalSide) {                                                                // Setter for symbol to show horizontal side of field
-        this.horizontalSide = horizontalSide;
-    }
-
-    public char getHorizontalSide() {                                                                                   // Getter for symbol to show horizontal side of field
-        return this.horizontalSide;
-    }
-
-    public void setFiller(char filler) {                                                                                // Setter Filler of content of field
-        this.filler = filler;
-    }
-
-    public char getFiller() {                                                                                           // Setter Filler of content of field
-        return this.filler;
-    }
-
     public void setScore(int score) {
         this.score = score;
     }
@@ -102,34 +75,15 @@ public class Game {
         return this.score;
     }
 
-    public void incrementScore () {
+    public void incrementScore() {
         this.score++;
     }
 
     public void clearField() {                                                                                          // Clear field
-        this.field = new char[height][width];
-
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
-                this.field[i][j] = this.filler;
+                listener.panels.get(i).get(j).setBackground(Color.lightGray);
             }
-        }
-    }
-
-    public void printField() {                                                                                          // PrintField
-        for (int i = height + 2 - 1; i >= 0; i--) {
-            for (int j = 0; j < width + 2; j++) {
-                if (i == 0 || i == height + 2 - 1) {                                                                    // If it's first or last line, print horizontal bounary ('-' by default)
-                    System.out.print(this.horizontalSide);
-                } else {
-                    if (j == 0 || j == width + 2 - 1) {                                                                 // Else: if it's first\last symbol in line, print vertical bounary('|' by default)
-                        System.out.print(this.verticalSide);
-                    } else {
-                        System.out.print(this.field[i - 1][j - 1]);                                                     // Else print filler
-                    }
-                }
-            }
-            System.out.println();
         }
     }
 
@@ -139,23 +93,25 @@ public class Game {
         int foodY = food.getY();
         PieceOfSnake tmp = new PieceOfSnake();
 
+        if (this.snake.getPieceOfSnake(0).getX() == foodX && this.snake.getPieceOfSnake(0).getY() == foodY) {
+            snake.growUp();
+            this.incrementScore();
+            this.generateFood();
+        } else {
+            listener.panels.get(foodY).get(foodX).setBackground(Color.orange);
+        }
+
         for (int i = 0; i < this.snake.getSize(); i++) {
             if (i == 0) {
                 if (this.snake.getSize() > 1) {
                     for (int j = 1; j < this.snake.getSize(); j++) {                                                        // intersect yourself check
                         if (this.snake.getPieceOfSnake(0).getX() == this.snake.getPieceOfSnake(j).getX() && this.snake.getPieceOfSnake(0).getY() == this.snake.getPieceOfSnake(j).getY()) {
-                            System.out.println("You lose!");
+                            gameOn = false;
+                            /*System.out.println("You lose!");
                             System.out.println("Your score: " + this.score);
-                            System.exit(0);
+                            System.exit(0);*/
                         }
                     }
-                }
-                if (this.snake.getPieceOfSnake(i).getX() == foodX && this.snake.getPieceOfSnake(i).getY() == foodY) {
-                    snake.growUp();
-                    this.incrementScore();
-                    this.generateFood();
-                } else {
-                    field[foodY][foodX] = food.getSymbol();
                 }
             }
             tmp = this.snake.getPieceOfSnake(i);
@@ -163,20 +119,13 @@ public class Game {
             y = tmp.getY();
 
             if (y >= height || y < 0 || x >= width || x < 0) {
-                System.out.println("You lose!");
+                /*System.out.println("You lose!");
                 System.out.println("Your score: " + this.score);
-                System.exit(0);
+                System.exit(0);*/
+                gameOn = false;
             } else {
-                field[y][x] = tmp.getSymbol();
+                listener.panels.get(y).get(x).setBackground(Color.darkGray);
             }
         }
-    }
-
-    public void setMode(int mode) {
-        this.mode = mode;
-    }
-
-    public int getMode() {
-        return this.mode;
     }
 }

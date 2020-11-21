@@ -4,9 +4,7 @@ public class PieceOfSnake {
     private int x;                                              // X coordinate
     private int y;                                              // Y coordinate
     private int turn;                                           // var contains direction_id of snake's move
-                                                                // 0 - no moves, 1 - move left, 2 - move up, 3 - move right, 4 - move down
-    private char symbol = '*';
-
+                                                                // 0 - no moves, 1 - move left, 2 - move up, 3 - move right, 4 - move dow
     public void setX(int x) {                                   // Setter X coordinate current piece of snake
         this.x = x;
     }
@@ -37,14 +35,6 @@ public class PieceOfSnake {
 
     public int getY() {                                         // Getter Y coordinate current piece of snake
         return this.y;
-    }
-
-    public void setSymbol(char symbol) {                        // Setter of symbol to display current piece of snake
-        this.symbol = symbol;
-    }
-
-    public char getSymbol() {                                   // Getter of symbol to display current piece of snake
-        return this.symbol;
     }
 
     public void setTurn(int turn) {                             // Setter of direction_id of snake's move
