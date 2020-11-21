@@ -1,0 +1,1 @@
+Rules are very simple.\nYour task - to take as more rating as you can.\nSnake's manage:\nbutton 'arrow up' - move up\nbutton 'arrow down' - move down\nbutton 'arrow left' - move left\nbutton 'arrow right' - move right.\nGood luck!
