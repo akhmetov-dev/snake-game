@@ -1,3 +1,4 @@
+#Snake game
 ![Snake game](/images/1.png)
 Rules are very simple.
 Your task - to take as more rating as you can.
