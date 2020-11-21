@@ -9,18 +9,17 @@ public class SnakeTest extends TestCase {
         int height = 10;
 
         Game container = new Game();
-        container.initContainer(width, height);
+        container.initContainer();
 
         for (int i = 0; i < 3; i++) {
             container.getSnake().growUp();
         }
         container.clearField();
         container.updateField();
-        container.printField();
         container.getSnake().moveLeft();
         container.clearField();
         container.updateField();
-        container.printField();
+
     }
 
     public void testMoveRight() {
@@ -28,18 +27,16 @@ public class SnakeTest extends TestCase {
         int height = 10;
 
         Game container = new Game();
-        container.initContainer(width, height);
+        container.initContainer();
 
         for (int i = 0; i < 3; i++) {
             container.getSnake().growUp();
         }
         container.clearField();
         container.updateField();
-        container.printField();
         container.getSnake().moveRight();
         container.clearField();
         container.updateField();
-        container.printField();
     }
 
     public void testMoveUp() {
@@ -47,18 +44,16 @@ public class SnakeTest extends TestCase {
         int height = 10;
 
         Game container = new Game();
-        container.initContainer(width, height);
+        container.initContainer();
 
         for (int i = 0; i < 3; i++) {
             container.getSnake().growUp();
         }
         container.clearField();
         container.updateField();
-        container.printField();
         container.getSnake().moveUp();
         container.clearField();
         container.updateField();
-        container.printField();
     }
 
     public void testMoveDown() {
@@ -66,17 +61,15 @@ public class SnakeTest extends TestCase {
         int height = 10;
 
         Game container = new Game();
-        container.initContainer(width, height);
+        container.initContainer();
 
         for (int i = 0; i < 3; i++) {
             container.getSnake().growUp();
         }
         container.clearField();
         container.updateField();
-        container.printField();
         container.getSnake().moveDown();
         container.clearField();
         container.updateField();
-        container.printField();
     }
 }
