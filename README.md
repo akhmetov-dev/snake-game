@@ -1,1 +1,9 @@
-Rules are very simple.\nYour task - to take as more rating as you can.\nSnake's manage:\nbutton 'arrow up' - move up\nbutton 'arrow down' - move down\nbutton 'arrow left' - move left\nbutton 'arrow right' - move right.\nGood luck!
+![Snake game](/images/1.png)
+Rules are very simple.
+Your task - to take as more rating as you can.
+Snake's manage:
+button 'arrow up' - move up
+button 'arrow down' - move down
+button 'arrow left' - move left
+button 'arrow right' - move right.
+Good luck!
