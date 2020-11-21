@@ -1,5 +1,4 @@
-#Snake game
-![Snake game](/images/1.png)
+# Snake game
 Rules are very simple.
 Your task - to take as more rating as you can.
 Snake's manage:
