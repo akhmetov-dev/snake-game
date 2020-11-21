@@ -6,7 +6,7 @@ button '↑' - move up
 button '↓' - move down  
 button '←' - move left  
 button '→' - move right.  
-Good luck!
+Good luck!  
 ![GitHub Logo](/images/1.png)  
 ![GitHub Logo](/images/2.png)  
 ![GitHub Logo](/images/3.png)  
