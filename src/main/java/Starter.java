@@ -1,24 +1,17 @@
-package ru.bmstu.iu4;
-
 import javax.swing.*;
 import java.io.IOException;
-import java.util.Scanner;
 
 public class Starter {
     public static void main(String[] args) throws IOException {
 
-        Game container = new Game();
-        Scanner scanner = new Scanner(System.in);
-
-        container.initContainer();
-        container.clearField();
-        container.updateField();
-        container.listener.again = false;
+        Game game = new Game();
+        game.clearField();
+        game.updateField();
 
         while (true) {
-            while (container.gameOn) {
-                switch (container.listener.getMode()) {
-                    case 1:
+            while (game.gameOn) {
+                switch (game.window.mode) {
+                    case 0:
                         try
                         {
                             Thread.sleep(1000);
@@ -28,7 +21,7 @@ public class Starter {
                             Thread.currentThread().interrupt();
                         }
                         break;
-                    case 2:
+                    case 1:
                         try
                         {
                             Thread.sleep(500);
@@ -38,7 +31,7 @@ public class Starter {
                             Thread.currentThread().interrupt();
                         }
                         break;
-                    case 3:
+                    case 2:
                         try
                         {
                             Thread.sleep(250);
@@ -48,7 +41,7 @@ public class Starter {
                             Thread.currentThread().interrupt();
                         }
                         break;
-                    case 4:
+                    case 3:
                         try
                         {
                             Thread.sleep(125);
@@ -59,30 +52,29 @@ public class Starter {
                         }
                         break;
                 }
-                if (container.listener.getMove() == 1 || container.listener.getMove() == 2 || container.listener.getMove() == 3 || container.listener.getMove() == 4) {
-                    switch (container.listener.getMove()) {
+                if (game.window.move == 1 || game.window.move == 2 || game.window.move == 3 || game.window.move == 4) {
+                    switch (game.window.move) {
                         case 1:
-                            container.getSnake().moveLeft();
+                            game.getSnake().moveLeft();
                             break;
                         case 2:
-                            container.getSnake().moveUp();
+                            game.getSnake().moveUp();
                             break;
                         case 3:
-                            container.getSnake().moveRight();
+                            game.getSnake().moveRight();
                             break;
                         case 4:
-                            container.getSnake().moveDown();
+                            game.getSnake().moveDown();
                             break;
                     }
-                    container.clearField();
-                    container.updateField();
+                    game.clearField();
+                    game.updateField();
                 }
             }
-            JOptionPane.showMessageDialog(container.listener.mainFrame, "You lose!\nYour score: " + container.getScore());
-            container.initContainer();
-            container.listener.setMove(0);
-            container.clearField();
-            container.updateField();
+            JOptionPane.showMessageDialog(game.window.mainFrame, "You lose!\nYour score: " + game.getScore());
+            game.gameAgain();
+            game.clearField();
+            game.updateField();
         }
     }
 }
