@@ -76,7 +76,7 @@ public class Window {
             }
             else if (actionEvent.getSource() == about) {
                 aboutFrame = createFrame(220, 470, "About", WindowConstants.HIDE_ON_CLOSE, false);
-                aboutFrame.setIconImage(new ImageIcon("information.png").getImage());
+                aboutFrame.setIconImage(new ImageIcon(getClass().getResource("img/information.png")).getImage());
                 centerFramePosition(aboutFrame);
 
                 aboutPanel = new JPanel();
@@ -114,7 +114,7 @@ public class Window {
             else if (actionEvent.getSource() == settings) {
                 settingsFrame = createFrame(300, 200, "Settings", WindowConstants.HIDE_ON_CLOSE, false);
 //                settingsFrame.setIconImage(new ImageIcon("gear.png").getImage());
-                settingsFrame.setIconImage(new ImageIcon(getClass().getResource("/Images/gear.png")).getImage());
+                settingsFrame.setIconImage(new ImageIcon(getClass().getResource("img/gear.png")).getImage());
                 centerFramePosition(settingsFrame);
 
                 difficultyList = new JComboBox(difficulty);
@@ -204,7 +204,7 @@ public class Window {
     public Window(int numOfHorCells, int numOfVerCells) {
         mainFrame = this.createFrame(480, 480, "Snake game", WindowConstants.EXIT_ON_CLOSE, true);
         this.centerFramePosition(mainFrame);
-        mainFrame.setIconImage(new ImageIcon(getClass().getResource("/Images/snake.png")).getImage());
+        mainFrame.setIconImage(new ImageIcon(getClass().getResource("img/snake.png")).getImage());
         mainPanel = new JPanel();
         mainPanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
         mainGrid = new GridLayout(numOfVerCells, numOfHorCells, 10, 10);
