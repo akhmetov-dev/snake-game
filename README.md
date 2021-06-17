@@ -7,9 +7,9 @@ button '↓' - move down;
 button '←' - move left;  
 button '→' - move right.  
 Good luck!  
-![GitHub Logo](/Images/1.png)  
-![GitHub Logo](/Images/2.png)  
-![GitHub Logo](/Images/3.png)  
-![GitHub Logo](/Images/4.png)  
-![GitHub Logo](/Images/5.png)  
-![GitHub Logo](/Images/6.png)  
+![GitHub Logo](/ReadmeImages/1.png)  
+![GitHub Logo](/ReadmeImages/2.png)  
+![GitHub Logo](/ReadmeImages/3.png)  
+![GitHub Logo](/ReadmeImages/4.png)  
+![GitHub Logo](/ReadmeImages/5.png)  
+![GitHub Logo](/ReadmeImages/6.png)  
